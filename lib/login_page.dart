@@ -1,5 +1,7 @@
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:mind_mate_project/home_page.dart';
 
 class LoginPage extends StatefulWidget{
@@ -18,12 +20,20 @@ class _LoginPageState extends State<LoginPage> {
         title: const Text("UNLOCK YOUR INNER STRENGTH"),
       ),
       body: Container(
-        color: Colors.blueGrey,
+        color:const  Color.fromARGB(255, 252, 252, 252),
         child: Center(
           // margin:const  EdgeInsets.all(12),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            //const SizedBox(height: 20,),
+            ClipOval(
+              child: SizedBox(
+                height: 100,
+                width: 300,
+                  child: Image.asset('assest/image/Mind_made_update_logo.jpg')),
+            ),
+            const SizedBox(height: 30,),
             SizedBox(
               width: 350,
               child: TextField(
@@ -45,7 +55,8 @@ class _LoginPageState extends State<LoginPage> {
                 keyboardType: TextInputType.visiblePassword,
                 obscureText: true,
                 decoration: textFieldDecoration(
-                  hint: "Enter your password "
+                  hint: "Enter your password ",
+                  prefix:const  Icon(Icons.lock)
                 ),
               ),
             ),
@@ -105,7 +116,7 @@ InputDecoration textFieldDecoration({Widget? prefix,String? hint,Widget? suffix}
 
   enabledBorder: OutlineInputBorder(
   borderSide: const BorderSide(
-  color: Color.fromARGB(235, 52, 237, 0),
+  color: Color.fromARGB(235, 188, 228, 181),
   width: 5
   ),
   borderRadius: BorderRadius.circular(11),
@@ -115,7 +126,6 @@ InputDecoration textFieldDecoration({Widget? prefix,String? hint,Widget? suffix}
     prefixIcon: prefix,
     hintText: hint,
     suffix: suffix
-
 
   );
 }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mind_mate_project/quiz/main1.dart';
+import 'package:mind_mate_project/temprary.dart';
 
 class HomePage extends StatelessWidget{
   @override
@@ -18,7 +20,9 @@ class HomePage extends StatelessWidget{
             width: double.infinity,
 
             child: ElevatedButton(
-              onPressed: (){},
+              onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>FeatureInProgressPage()));
+              },
               child: const Text("MindMate Assistant "),
             ),
           ),
@@ -28,7 +32,9 @@ class HomePage extends StatelessWidget{
             width: double.infinity,
 
             child: ElevatedButton(
-              onPressed: (){},
+              onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>StaringPage()));
+              },
               child: const Text("Emotional Fitness check"),
             ),
           ),
@@ -38,7 +44,9 @@ class HomePage extends StatelessWidget{
             width: double.infinity,
 
             child: ElevatedButton(
-              onPressed: (){},
+              onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>FeatureInProgressPage()));
+              },
               child: const Text("Talk Now (Schedule Your Session)"),
             ),
           ),
