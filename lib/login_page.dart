@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:mind_mate_project/home_page.dart';
+import 'package:mind_mate_project/signup_page.dart';
 
 class LoginPage extends StatefulWidget{
   const LoginPage({super.key});
@@ -84,7 +85,24 @@ class _LoginPageState extends State<LoginPage> {
                 }
               },
                 child: const Text("login"),
-            )
+            ),
+
+            TextButton(
+              onPressed: () {
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => SignUpPage()));
+              },
+              child: const Text(
+                "Create an Account",
+                style: TextStyle(
+                  color: Colors.blue, // Change the color to match your theme
+                  fontSize: 16, // Adjust the font size as needed
+                  fontWeight: FontWeight.bold, // Make the text bold
+                ),
+              ),
+            ),
+
+
           ],
         ),
         ),
