@@ -1,4 +1,5 @@
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -65,24 +66,42 @@ class _LoginPageState extends State<LoginPage> {
 
             ElevatedButton(
               onPressed: (){
-                if(emailid.text.trim()=="ayush"&& password.text.trim()=="12345") {
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => HomePage()));
-                }
-                else{
-                  showDialog(context: context, builder: (ctx)=>AlertDialog(
-                    title:const  Text("Invalid Input"),
-                    content: const Text("Make sure you have valid mail id and password "),
-                    actions: [
-                      TextButton(
-                          onPressed:() {
-                            Navigator.pop(ctx);
-
-                          },
-                          child:const Text("ok"))
-                    ],
-                  ));
-                }
+                FirebaseAuth.instance.signInWithEmailAndPassword(
+                    email: emailid.text,
+                    password: password.text).then((value) {
+                      Navigator.pushReplacement(
+                          context,MaterialPageRoute(builder: (context) => const HomePage())
+                      ).onError((error, stackTrace) {
+                        showDialog(context: context, builder: (ctx)=>AlertDialog(
+                                title:const  Text("Invalid Input"),
+                                content: const Text("Make sure you have valid mail id and password "),
+                                actions: [
+                                  TextButton(
+                                      onPressed:() {
+                                        Navigator.pop(ctx);
+                                      },
+                                      child:const Text("ok"))
+                                ],
+                              ));
+                      });
+                });
+                // if(emailid.text.trim()=="ayush"&& password.text.trim()=="12345") {
+                //   Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => HomePage()));
+                // }
+                // else{
+                //   showDialog(context: context, builder: (ctx)=>AlertDialog(
+                //     title:const  Text("Invalid Input"),
+                //     content: const Text("Make sure you have valid mail id and password "),
+                //     actions: [
+                //       TextButton(
+                //           onPressed:() {
+                //             Navigator.pop(ctx);
+                //
+                //           },
+                //           child:const Text("ok"))
+                //     ],
+                //   ));
+                // }
               },
                 child: const Text("login"),
             ),
@@ -90,7 +109,7 @@ class _LoginPageState extends State<LoginPage> {
             TextButton(
               onPressed: () {
                 Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) =>const SignUpPage()));
+                    MaterialPageRoute(builder: (context) => SignUpPage()));
               },
               child: const Text(
                 "Create an Account",

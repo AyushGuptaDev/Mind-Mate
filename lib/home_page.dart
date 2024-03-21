@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:mind_mate_project/login_page.dart';
 import 'package:mind_mate_project/quiz/main1.dart';
 import 'package:mind_mate_project/temprary.dart';
 
@@ -7,8 +9,31 @@ class HomePage extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      appBar: AppBar(
+      // appBar: AppBar(
+      //   title: const Text("Home page"),
+      // ),
+      appBar:AppBar(
         title: const Text("Home page"),
+        actions: [
+          DropdownButton(
+            onChanged: (String? value) {
+              if (value == 'logout') {
+                FirebaseAuth.instance.signOut().then((value) {
+                  print("logout ho chuka");
+                  Navigator.push(
+                      context, MaterialPageRoute(
+                      builder: (context)=>const LoginPage()));
+                });
+              }
+            },
+            items: const [
+              DropdownMenuItem(
+                value: 'logout',
+                child:  Text('Logout'),
+              ),
+            ],
+          ),
+        ],
       ),
       body: Column(
 

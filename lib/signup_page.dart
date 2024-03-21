@@ -1,7 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:mind_mate_project/home_page.dart';
 
 class SignUpPage extends StatelessWidget {
-  const SignUpPage({super.key});
+  //const SignUpPage({super.key});
+  //const SignUpPage({Key? key}) : super(key: key);
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,16 +33,18 @@ class SignUpPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-            const TextField(
-              decoration: InputDecoration(
+             TextField(
+              controller: emailController,
+              decoration: const InputDecoration(
                 labelText: "Email",
                 border: OutlineInputBorder(),
               ),
-              obscureText: true,
+              obscureText: false,
             ),
             const SizedBox(height: 20),
-            const TextField(
-              decoration:  InputDecoration(
+             TextField(
+              controller: passwordController,
+              decoration:  const InputDecoration(
                 labelText: "Password",
                 border: OutlineInputBorder(),
               ),
@@ -46,7 +53,16 @@ class SignUpPage extends StatelessWidget {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                // Implement sign-up logic here
+                FirebaseAuth.instance.createUserWithEmailAndPassword(
+                    email: emailController.text,
+                    password: passwordController.text).then((value) =>
+                    Navigator.push(
+                        context, MaterialPageRoute(
+                        builder: (context)=>const HomePage())
+                    )
+                ).onError((error, stackTrace) => {
+                  print("Error ${error.toString()}")
+                });
               },
               child: const Text("Sign Up"),
             ),
