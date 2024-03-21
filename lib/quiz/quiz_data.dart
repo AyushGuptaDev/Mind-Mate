@@ -9,57 +9,46 @@ class QuestionData {
     shuffleAnswer.shuffle();
     return shuffleAnswer;
   }
-}
-const questions=[
-  QuestionData(
-    'What are the main building blocks of Flutter UIs?',
-    [
-      'Widgets',
-      'Components',
-      'Blocks',
-      'Functions',
-    ],
-  ),
-  QuestionData('How are Flutter UIs built?', [
-    'By combining widgets in code',
-    'By combining widgets in a visual editor',
-    'By defining widgets in config files',
-    'By using XCode for iOS and Android Studio for Android',
-  ]),
-  QuestionData(
-    'What\'s the purpose of a StatefulWidget?',
-    [
-      'Update UI as data changes',
-      'Update data as UI changes',
-      'Ignore data changes',
-      'Render UI that does not depend on data',
-    ],
-  ),
-  QuestionData(
-    'Which widget should you try to use more often: StatelessWidget or StatefulWidget?',
-    [
-      'StatelessWidget',
-      'StatefulWidget',
-      'Both are equally good',
-      'None of the above',
-    ],
-  ),
-  QuestionData(
-    'What happens if you change data in a StatelessWidget?',
-    [
-      'The UI is not updated',
-      'The UI is updated',
-      'The closest StatefulWidget is updated',
-      'Any nested StatefulWidgets are updated',
-    ],
-  ),
-  QuestionData(
-    'How should you update data inside of StatefulWidgets?',
-    [
-      'By calling setState()',
-      'By calling updateData()',
-      'By calling updateUI()',
-      'By calling updateState()',
-    ],
-  ),
-];
+  }
+   const questions= [
+    QuestionData(
+      'In the last month, how often have you been upset because of something that happened unexpectedly?',
+      ['Never', 'Almost never', 'Sometimes', 'Fairly often', 'Very often'],
+    ),
+    QuestionData(
+      'In the last month, how often have you felt that you were unable to control the important things in your life?',
+      ['Never', 'Almost never', 'Sometimes', 'Fairly often', 'Very often'],
+    ),
+    QuestionData(
+      'In the last month, how often have you felt nervous and stressed?',
+      ['Never', 'Almost never', 'Sometimes', 'Fairly often', 'Very often'],
+    ),
+    QuestionData( 
+      'In the last month, how often have you felt confident about your ability to handle your personal problems?',
+        ['Very often', 'Fairly often', 'Sometimes', 'Almost never', 'Never'],
+    ),
+    QuestionData(
+      'In the last month, how often have you felt that things were going your way?',
+        ['Very often', 'Fairly often', 'Sometimes', 'Almost never', 'Never'],
+    ),
+    QuestionData(
+      'In the last month, how often have you found that you could not cope with all the things that you had to do?',
+      ['Never', 'Almost never', 'Sometimes', 'Fairly often', 'Very often'],
+    ),
+    QuestionData(
+      'In the last month, how often have you been able to control irritations in your life?',
+        ['Very often', 'Fairly often', 'Sometimes', 'Almost never', 'Never'],
+    ),
+    QuestionData(
+      'In the last month, how often have you felt that you were on top of things?',
+        ['Very often', 'Fairly often', 'Sometimes', 'Almost never', 'Never'],
+    ),
+    QuestionData(
+      'In the last month, how often have you been angered because of things that happened that were outside of your control?',
+      ['Never', 'Almost never', 'Sometimes', 'Fairly often', 'Very often'],
+    ),
+    QuestionData(
+      'In the last month, how often have you felt difficulties were piling up so high that you could not overcome them?',
+      ['Never', 'Almost never', 'Sometimes', 'Fairly often', 'Very often'],
+    ),
+  ];

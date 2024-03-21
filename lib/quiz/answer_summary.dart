@@ -82,14 +82,10 @@ class answerSumarry extends StatelessWidget {
                     ),
                     const SizedBox(height: 5),
                     Text(
-                      'Chosen Answer: ${data['coosenAnswer']}',
+                      'Chosen option: ${data['coosenAnswer']}',
                       style: resultScreenDataQuestion(fill: Colors.lightBlueAccent),
                     ),
                     const SizedBox(height: 3),
-                    Text(
-                      'Correct Answer: ${data['correctAnswer']}',
-                      style: resultScreenDataQuestion(fill: Colors.pink),
-                    ),
                   ],
                 ),
               )

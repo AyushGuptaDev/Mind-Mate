@@ -3,6 +3,7 @@ import 'package:mind_mate_project/quiz/main1.dart';
 import 'package:mind_mate_project/temprary.dart';
 
 class HomePage extends StatelessWidget{
+  const HomePage({super.key});
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -35,7 +36,7 @@ class HomePage extends StatelessWidget{
               onPressed: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>StaringPage()));
               },
-              child: const Text("Emotional Fitness check"),
+              child: const Text("Mental Fitness check"),
             ),
           ),
           const SizedBox(height: 20,),

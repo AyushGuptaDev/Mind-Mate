@@ -17,8 +17,8 @@ Decoration backgroundColour
   return const BoxDecoration(
     gradient: LinearGradient(
         colors: [
-          Color.fromARGB(255, 29, 39, 247),
-          Color.fromARGB(255, 23, 184, 4)
+          Color.fromARGB(255, 223, 164, 41),
+          Color.fromARGB(255, 234, 198, 50)
         ],
         begin: Alignment.topLeft,
         end: Alignment.bottomRight

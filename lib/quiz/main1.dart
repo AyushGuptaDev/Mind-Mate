@@ -32,14 +32,17 @@ class StaringPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             //const SizedBox(height: 10,),
-            Image.asset('assest/image/quiz-logo.png'),
+            const CircleAvatar(
+              radius: 120,
+                backgroundImage: AssetImage('assest/image/Mind_made_update_logo.jpg'),
+            ),
             const SizedBox(height: 70,),
             ElevatedButton.icon
               (onPressed: (){
                 Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>const quizScreen()));
             },
                 icon: const Icon(Icons.arrow_right_alt),
-                label: const Text ("Start Quiz"))
+                label: const Text ("Start Test"))
           ],
         ),
       ),

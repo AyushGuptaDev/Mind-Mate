@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
 class SignUpPage extends StatelessWidget {
+  const SignUpPage({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Create an Account"),
+        title: const Text("Create an Account"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -19,14 +20,14 @@ class SignUpPage extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             const TextField(
               decoration: InputDecoration(
-                labelText: "UserNaame",
+                labelText: "UserName",
                 border: OutlineInputBorder(),
               ),
             ),
-            cosnst SizedBox(height: 20),
+            const SizedBox(height: 20),
             const TextField(
               decoration: InputDecoration(
                 labelText: "Email",
