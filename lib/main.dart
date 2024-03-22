@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:mind_mate_project/login_page.dart';
 
 void main() async{
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return  GetMaterialApp(
       title: "Mind Mate",
       theme: ThemeData().copyWith(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.lime),

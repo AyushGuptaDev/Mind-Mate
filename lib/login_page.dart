@@ -1,8 +1,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:mind_mate_project/forgot_password.dart';
 import 'package:mind_mate_project/home_page.dart';
 import 'package:mind_mate_project/signup_page.dart';
 
@@ -62,6 +61,27 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
             ),
+            Container(
+              margin: const EdgeInsets.only(right: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>ForgotPassword()));
+                    },
+                    child: const Text(
+                      "Forgot Password?",
+                      style: TextStyle(
+                        color: Colors.blue, // Change the color to match your theme
+                        fontSize: 16, // Adjust the font size as needed
+                        fontWeight: FontWeight.bold, // Make the text bold
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
             const SizedBox(height: 20,),
 
             ElevatedButton(
@@ -105,10 +125,9 @@ class _LoginPageState extends State<LoginPage> {
               },
                 child: const Text("login"),
             ),
-
             TextButton(
               onPressed: () {
-                Navigator.pushReplacement(context,
+                Navigator.push(context,
                     MaterialPageRoute(builder: (context) => SignUpPage()));
               },
               child: const Text(
@@ -120,8 +139,6 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
             ),
-
-
           ],
         ),
         ),

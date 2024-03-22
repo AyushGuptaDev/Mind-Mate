@@ -20,7 +20,7 @@ class HomePage extends StatelessWidget{
               if (value == 'logout') {
                 FirebaseAuth.instance.signOut().then((value) {
                   print("logout ho chuka");
-                  Navigator.push(
+                  Navigator.pushReplacement(
                       context, MaterialPageRoute(
                       builder: (context)=>const LoginPage()));
                 });
@@ -80,5 +80,4 @@ class HomePage extends StatelessWidget{
       ),
     );
   }
-
 }

@@ -26,13 +26,7 @@ class SignUpPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-            const TextField(
-              decoration: InputDecoration(
-                labelText: "UserName",
-                border: OutlineInputBorder(),
-              ),
-            ),
-            const SizedBox(height: 20),
+
              TextField(
               controller: emailController,
               decoration: const InputDecoration(
@@ -56,7 +50,7 @@ class SignUpPage extends StatelessWidget {
                 FirebaseAuth.instance.createUserWithEmailAndPassword(
                     email: emailController.text,
                     password: passwordController.text).then((value) =>
-                    Navigator.push(
+                    Navigator.pushReplacement(
                         context, MaterialPageRoute(
                         builder: (context)=>const HomePage())
                     )
