@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:mind_mate_project/login_page.dart';
 import 'package:mind_mate_project/quiz/main1.dart';
 import 'package:mind_mate_project/temprary.dart';
-import 'package:mind_mate_project/zego_cloud.dart';
+import 'package:mind_mate_project/video_call/vidiocallsaman.dart';
+import 'package:mind_mate_project/video_call/zego_cloud.dart';
 
 class HomePage extends StatelessWidget{
   const HomePage({super.key});
@@ -72,8 +73,9 @@ class HomePage extends StatelessWidget{
 
             child: ElevatedButton(
               onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>const VidioCall(callID: "12345")));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>Saman()));
               },
+
               child: const Text("Talk Now (Schedule Your Session)"),
             ),
           ),
