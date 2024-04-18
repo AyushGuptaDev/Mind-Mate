@@ -1,9 +1,9 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:mind_mate_project/forgot_password.dart';
+import 'package:mind_mate_project/login/forgot_password.dart';
 import 'package:mind_mate_project/home_page.dart';
-import 'package:mind_mate_project/signup_page.dart';
+import 'package:mind_mate_project/login/signup_page.dart';
 
 class LoginPage extends StatefulWidget{
   const LoginPage({super.key});
@@ -44,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
                 decoration: textFieldDecoration(
                   prefix: const Icon(Icons.email_outlined),
                   hint: "Enter your Email id",
-                  suffix: const Text("@gmail.com"),
+                  //suffix: const Text("@gmail.com"),
                 ),
               ),
             ),

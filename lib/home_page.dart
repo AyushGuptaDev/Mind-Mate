@@ -1,10 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:mind_mate_project/login_page.dart';
+import 'package:mind_mate_project/chatbot/chatbot_screen.dart';
+import 'package:mind_mate_project/login/login_page.dart';
 import 'package:mind_mate_project/quiz/main1.dart';
-import 'package:mind_mate_project/temprary.dart';
-import 'package:mind_mate_project/video_call/vidiocallsaman.dart';
-import 'package:mind_mate_project/video_call/zego_cloud.dart';
+import 'package:mind_mate_project/video_call/slot_booking.dart';
 
 class HomePage extends StatelessWidget{
   const HomePage({super.key});
@@ -49,7 +48,7 @@ class HomePage extends StatelessWidget{
 
             child: ElevatedButton(
               onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>FeatureInProgressPage()));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>const ChatbotScreen()));
               },
               child: const Text("MindMate Assistant "),
             ),
@@ -73,7 +72,7 @@ class HomePage extends StatelessWidget{
 
             child: ElevatedButton(
               onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>Saman()));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=> const SlotBooking()));
               },
 
               child: const Text("Talk Now (Schedule Your Session)"),
