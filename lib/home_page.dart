@@ -4,6 +4,7 @@ import 'package:mind_mate_project/chatbot/chatbot_screen.dart';
 import 'package:mind_mate_project/login/login_page.dart';
 import 'package:mind_mate_project/quiz/main1.dart';
 import 'package:mind_mate_project/video_call/slot_booking.dart';
+import 'package:mind_mate_project/video_call/ProfileScreen.dart';
 
 class HomePage extends StatelessWidget{
   const HomePage({super.key});

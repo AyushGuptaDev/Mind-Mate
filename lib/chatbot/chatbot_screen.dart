@@ -17,9 +17,9 @@ class ChatMessage {
 
 
 class QueryProvider with ChangeNotifier {
-  String _answer = '';
+ // String _answer = '';//
   final query = "";
-  bool _isLoading = false;
+  final bool _isLoading = false;
 
 
   bool get isLoading => _isLoading;
@@ -280,8 +280,8 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
               ),
               child: TextField(
                 controller: _textController,
-                style: TextStyle(color: Colors.white),
-                decoration: InputDecoration(
+                style: const TextStyle(color: Colors.white),
+                decoration: const InputDecoration(
                   hintText: " Say something...",
                   hintStyle: TextStyle(color: Colors.white),
                   border: InputBorder.none,
@@ -289,17 +289,17 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 10.0,
           ),
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.lightGreen,
               shape: BoxShape.circle,
               boxShadow: [BoxShadow(blurRadius: 5, color: Colors.white)],
             ),
             child: IconButton(
-              icon: Icon(Icons.keyboard_return_rounded, color: Colors.white),
+              icon: const Icon(Icons.keyboard_return_rounded, color: Colors.white),
               onPressed: _sendMessage,
             ),
           )

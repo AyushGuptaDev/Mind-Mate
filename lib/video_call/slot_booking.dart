@@ -72,6 +72,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:mind_mate_project/video_call/ProfileScreen.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class SlotBooking extends StatefulWidget {
   const SlotBooking({Key? key}) : super(key: key);
@@ -112,6 +115,25 @@ class _SlotBookingState extends State<SlotBooking> {
     return nextThreeDays;
   }
 
+  Future<void>onChoosingSlot(BuildContext context, DateTime slot_time)async{
+    late User? _user;
+    _user=FirebaseAuth.instance.currentUser;
+
+
+    if (_user != null) {
+      // Update user profile in Firestore
+      await FirebaseFirestore.instance.collection('users').doc(_user.uid).set({
+        'booked slot': slot_time
+        // You can add more details here if needed
+      }, SetOptions(merge: true));
+    }
+
+    Navigator.of(context).pop();
+
+
+    Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfileScreen()));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -122,11 +144,11 @@ class _SlotBookingState extends State<SlotBooking> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               "Available Slots",
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Expanded(
               child: ListView.builder(
                 itemCount: dates.length,
@@ -139,7 +161,7 @@ class _SlotBookingState extends State<SlotBooking> {
                             horizontal: 16, vertical: 8),
                         child: Text(
                           DateFormat('EEEE, MMM d').format(dates[index]),
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
@@ -159,13 +181,20 @@ class _SlotBookingState extends State<SlotBooking> {
                                 builder: (context) => AlertDialog(
                                   title: Text("Confirmation"),
                                   content: Text(
-                                      "You have booked ${slots[slotIndex]} on ${DateFormat('EEEE, MMM d').format(dates[index])}"),
+                                      "Do you want to book a slot ${slots[slotIndex]} on ${DateFormat('EEEE, MMM d').format(dates[index])}"),
                                   actions: [
                                     TextButton(
                                       onPressed: () {
-                                        Navigator.of(context).pop();
+                                        // Convert the slot string into a DateTime object
+                                        DateTime slotTime = DateTime(
+                                            dates[index].year,
+                                            dates[index].month,
+                                            dates[index].day,
+                                            int.parse(slots[slotIndex].split(':')[0]), // Extract hour from slot string
+                                        0,);
+                                        onChoosingSlot(context, slotTime);
                                       },
-                                      child: Text("OK"),
+                                      child: const Text("Continue"),
                                     ),
                                   ],
                                 ),

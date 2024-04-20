@@ -1,12 +1,44 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mind_mate_project/home_page.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class SignUpPage extends StatelessWidget {
   //const SignUpPage({super.key});
   //const SignUpPage({Key? key}) : super(key: key);
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController username = TextEditingController();
+
+
+  SignUpPage({super.key});
+
+  void signUp(BuildContext context) async {
+    final String email = emailController.text;
+    final String password = passwordController.text;
+    final String name=username.text;
+    try {
+      UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+
+      // Add user data to Realtime Database immediately after creating user
+      await FirebaseFirestore.instance.collection('users').doc(userCredential.user!.uid).set({
+        'email': email,
+        'username':name,
+      });
+
+      emailController.clear();
+      passwordController.clear();
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(
+              builder: (context) => const HomePage()));
+    } catch(error ) {
+      print(error );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +50,7 @@ class SignUpPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-           const Text(
+            const Text(
               "Sign Up",
               style: TextStyle(
                 fontSize: 24,
@@ -26,8 +58,16 @@ class SignUpPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-
-             TextField(
+            TextField(
+              controller: username,
+              decoration: const InputDecoration(
+                labelText: "User Name",
+                border: OutlineInputBorder(),
+              ),
+              obscureText: false,
+            ),
+            const SizedBox(height: 20),
+            TextField(
               controller: emailController,
               decoration: const InputDecoration(
                 labelText: "Email",
@@ -36,9 +76,9 @@ class SignUpPage extends StatelessWidget {
               obscureText: false,
             ),
             const SizedBox(height: 20),
-             TextField(
+            TextField(
               controller: passwordController,
-              decoration:  const InputDecoration(
+              decoration: const InputDecoration(
                 labelText: "Password",
                 border: OutlineInputBorder(),
               ),
@@ -46,18 +86,7 @@ class SignUpPage extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () {
-                FirebaseAuth.instance.createUserWithEmailAndPassword(
-                    email: emailController.text,
-                    password: passwordController.text).then((value) =>
-                    Navigator.pushReplacement(
-                        context, MaterialPageRoute(
-                        builder: (context)=>const HomePage())
-                    )
-                ).onError((error, stackTrace) => {
-                  print("Error ${error.toString()}")
-                });
-              },
+              onPressed: () => signUp(context),
               child: const Text("Sign Up"),
             ),
           ],
@@ -66,4 +95,3 @@ class SignUpPage extends StatelessWidget {
     );
   }
 }
-
