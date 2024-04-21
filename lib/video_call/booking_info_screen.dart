@@ -1,26 +1,29 @@
 
-
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mind_mate_project/home_page.dart';
 
-class ProfileScreen extends StatefulWidget {
+class BookingInfoScreen extends StatefulWidget {
+  const BookingInfoScreen ({super.key});
 
   @override
-  _ProfileScreenState createState() => _ProfileScreenState();
+  _BookingInfoScreenState createState() => _BookingInfoScreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
+class _BookingInfoScreenState extends State<BookingInfoScreen> {
   late User? _user;
   // late Map<String, dynamic> _userData = {};
   var userEmail;
   var Bookedslot;
+  var slot;
 
   @override
   void initState() {
     super.initState();
     _getUserData();
+
   }
   Future<void> _getUserData() async {
     _user = FirebaseAuth.instance.currentUser;
@@ -34,37 +37,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
       print('User UID: ${_user!.uid}'); // Debug print
 
       if (userSnapshot.exists) {
-        final _userData = userSnapshot.data() as Map<String, dynamic>;
-        userEmail = _userData['email'];
-        Bookedslot=_userData['booked slot'];
+        final userData = userSnapshot.data() as Map<String, dynamic>;
+        userEmail = userData['email'];
+        Bookedslot=userData['booked slot'];
 
 
         print('User data: ${userEmail}'); // Debug print
 
         setState(() {
-
+          slot = DateFormat.yMMMMd().add_jm().format(Bookedslot);
         });
       } else {
         print('User document does not exist'); // Debug print
       }
     }
   }
-  // Future<void> _getUserData() async {
-  //   // Get current user
-  //   _user = FirebaseAuth.instance.currentUser;
-  //
-  //   if (_user != null) {
-  //     // Retrieve user data from Firestore
-  //     DocumentSnapshot userSnapshot = await FirebaseFirestore.instance
-  //         .collection('users')
-  //         .doc(_user!.uid)
-  //         .get();
-  //
-  //     setState(() {
-  //       _userData = userSnapshot.data() as Map<String, dynamic>;
-  //     });
-  //   }
-  // }
+
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +68,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
             //Text('Name: ${_userData['name']}'),
             const Text('You have successfully booked the Consilling session '),
-            Text('Booking details: $Bookedslot \n and booking mail id is $userEmail'),
+            Text('Booking details: $slot \n and booking mail id is $userEmail'),
 
 
             ElevatedButton(onPressed: (){

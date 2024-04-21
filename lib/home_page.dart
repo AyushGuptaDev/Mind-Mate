@@ -4,7 +4,8 @@ import 'package:mind_mate_project/chatbot/chatbot_screen.dart';
 import 'package:mind_mate_project/login/login_page.dart';
 import 'package:mind_mate_project/quiz/main1.dart';
 import 'package:mind_mate_project/video_call/slot_booking.dart';
-import 'package:mind_mate_project/video_call/ProfileScreen.dart';
+import 'package:mind_mate_project/video_call/booking_info_screen.dart';
+import 'package:mind_mate_project/video_call/start_call_screen.dart';
 
 class HomePage extends StatelessWidget{
   const HomePage({super.key});
@@ -76,9 +77,22 @@ class HomePage extends StatelessWidget{
                 Navigator.push(context, MaterialPageRoute(builder: (context)=> const SlotBooking()));
               },
 
-              child: const Text("Talk Now (Schedule Your Session)"),
+              child: const Text("Schedule Your Session"),
             ),
           ),
+      const SizedBox(height: 20,),
+      SizedBox(
+        height: 50,
+        width: double.infinity,
+
+        child: ElevatedButton(
+          onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context)=> const StartCallScreen()));
+          },
+
+          child: const Text("Start video call"),
+        ),
+      )
         ],
       ),
     );
